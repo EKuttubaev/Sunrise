@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block content %}
+   <div class="ui form">
+  <form method="post" class="ui form">
+    {% csrf_token %}
+
+    {{ form.as_p }}
+        <input type="submit" value="Добавить категорию" class="ui primary button">
+
+</form>
+</div>
+
+{% endblock %}

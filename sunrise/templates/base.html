@@ -1,0 +1,50 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="{% static 'css/semantic.min.css' %}" rel="stylesheet">
+    <script src="{% static 'js/semantic.min.js' %}"></script>
+    <title>SunRice</title>
+</head>
+<body>
+<div class="ui attached stackable menu">
+    <div class="ui container">
+        <a class="item" href="{% url 'index' %}">
+            <i class=""></i> Home
+        </a>
+         <a class="item" href="{% url 'products_list' %}">
+            <i class=""></i> Список продуктов
+        </a>
+
+        {% if user.is_authenticated %}
+        <a class="item" href="{% url 'add_products' %}">
+            <i class=""></i> Добавить товары
+        </a>
+         <a class="item" href="{% url 'add_category' %}">
+            <i class=""></i> Добавить категории товаров
+        </a>
+        <a class="right item">
+            <a class="item" href="{% url 'change_profile' %}">
+            <i class=""></i>Изменить профиль
+            </a>
+            <a href="{% url 'profile' %}">  {{ user.username }} </a>
+            <a href="{% url 'logout' %}" class="item">Выход</a>
+        </a>
+        {% else %}
+
+        <a class="right item" href="{% url 'login' %}">Вход</a>
+        <a class="item" href="{% url 'register' %}">
+            <i class=""></i> Регистрация
+        </a>
+
+        {% endif %}
+
+    </div>
+</div>
+{% block content %}
+
+
+{% endblock %}
+</body>
+</html>
